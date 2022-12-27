@@ -1,7 +1,4 @@
-﻿using Lesson34.DAO;
-using Microsoft.EntityFrameworkCore;
-
-namespace Lesson34.Service;
+﻿namespace Lesson34.WebService;
 
 public class CompanyRepository : ICompanyRepository
 {
@@ -14,9 +11,9 @@ public class CompanyRepository : ICompanyRepository
             .ThenInclude(user1 => user1.Details)
             .FirstAsync();
 
-    public async Task AddUserAsync(User user)
+    public async Task AddUserAsync(UserModel user)
     {
-        await _context.Users.AddAsync(user);
+        await _context.Users.AddAsync(new User(user));
         await _context.SaveChangesAsync();
     }
 }

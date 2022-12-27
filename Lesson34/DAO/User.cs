@@ -1,17 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace Lesson34.DAO;
 
-namespace Lesson34.DAO;
-
-public record User
+public record User : UserModel
 {
-    [Key] public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public string Info { get; set; }
-    [NotMapped]
-    public string FullName { get; set; }
     public DetailsInfo Details { get; set; }
-    public int DepartmentId { get; set; }
     public Department Department { get; set; }
+    [NotMapped] public string FullName => $"{FirstName} {LastName}";
+
+    public User()
+    {
+    }
+
+    public User(UserModel model)
+    {
+        Id = model.Id;
+        FirstName = model.FirstName;
+        LastName = model.LastName;
+        Info = model.Info;
+        DepartmentId = model.DepartmentId;
+    }
 }
