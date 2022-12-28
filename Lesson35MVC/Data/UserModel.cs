@@ -1,4 +1,6 @@
-﻿namespace Lesson34.Model;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Lesson34.Model;
 
 public record UserModel
 {

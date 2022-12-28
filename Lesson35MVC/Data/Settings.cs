@@ -1,4 +1,8 @@
-﻿namespace Lesson34.Values;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.Data.SqlClient;
+
+namespace Lesson34.Values;
 
 public static class Settings
 {
